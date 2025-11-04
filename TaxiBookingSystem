@@ -1,0 +1,76 @@
+import java.util.*;
+public class TaxiBookingSystem{
+    static List<Taxi> taxis = new ArrayList<>();
+    Static Scanner in = new Scanner(System.in);
+    static int customerCount = 1;
+
+    public static void main(String[] args){
+         System.out.print("Enter the number of Taxis : ");
+         int numTaxis = in.nextInt();
+         initializeTaxis(numTaxis);
+
+         while(true){
+            System.out.println("\n 1.Book Taxi \n 2.Display Taxi Details \n 3.Exit");
+            System.out.print("Enter your choice : ");
+            int choice = in.nextInt();
+
+            switch(choice){
+                case 1->{
+                    bookTaxi();
+                }case 2->{
+                    displayTaxiDetails();
+                }case 3->{
+                    System.out.print("Exiting....");
+                    return;
+                }default->{
+                    System.out.print("Invalid choice...Try Again...");
+                }
+            }
+         }
+
+    }
+    public static void initializeTaxis(int num){
+        for(int i=1;i<=n;i++){
+            Taxis.add(new Taxi(i));
+        }
+    }
+    public static void bookTaxi(){
+        int customerId = customerCount++;
+        System.out.print("Enter pickUp point (A-F) : ");
+        char pickUp = in.next().toUpperCase().charAt(0);
+        System.out.print("Enter Drop Point (A-F)" : );
+        char drop = in.next().toUpperCase().charAt(0);
+        System.out.print("Enter the pickUpTime in hours : ");
+        int pickUpTime = in.nextInt();
+
+        Taxi selectedTaxi = null;
+        int minDistance = Integer.MAX_VALUE;
+        for(Taxi taxi : taxis){
+            if(taxi.isAvailable(pickUpTime)){
+                int distance = Math.abs(taxi.currentPoint - pickUp);
+                if(distance < minDistance || (taxi.totalEarnings < selectedTaxi.totalEarnings)){
+                    selectedTaxi = taxi;
+                    minDistance = distance;
+                }
+            }
+        }
+        if(selectedTaxi == null){
+            System.out.println("Booking rejected...No taxis available...");
+            return;
+        }
+
+        int dropTime = pickUpTime + Math.abs(drop - pickUp);
+        int amount = selectedTaxi.calculateEarnings(pickUp,drop);
+        int bookingId = selectedTaxi.bookings.size() + 1;
+        
+        Booking booking = new Booking(bookingId,customerId,pickUp,drop,pickUpTime,dropTime,amount);
+        selectedTaxi.addBooking(booking);
+        System.out.println("Taxi - "+selectedTaxi.id+" is allocated..");
+
+    }
+    public static void displayTaxiDetails(){
+        for(Taxi taxi : taxis){
+            System.out.println("Taxi")
+        }
+    }
+}
