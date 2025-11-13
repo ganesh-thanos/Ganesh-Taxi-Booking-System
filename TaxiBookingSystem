@@ -70,7 +70,13 @@ public class TaxiBookingSystem{
     }
     public static void displayTaxiDetails(){
         for(Taxi taxi : taxis){
-            System.out.println("Taxi")
+            System.out.println("Taxi "+taxi.id + "Total Earnings. Rs."+taxi.totalEarnings);
+            System.out.printf("%-10s %-10s %-5s %-5s %-12s %-9s %-6s%n","bookingId","customerId","form","to","pickUptime","dropTime","Amount");
+
+            for(Booking booking : taxi.bookings){
+                System.out.printf("%10-d %10-d %-5c %-5c %-12d %-9d %-6d%n",booking.bookingId,booking.customerId,booking.from,booking.to,booking.pickUpTime,booking.dropTime,booking.amount);
+                 
+            }
         }
     }
 }
