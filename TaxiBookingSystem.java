@@ -1,7 +1,8 @@
 import java.util.*;
+
 public class TaxiBookingSystem{
     static List<Taxi> taxis = new ArrayList<>();
-    Static Scanner in = new Scanner(System.in);
+    static Scanner in = new Scanner(System.in);
     static int customerCount = 1;
 
     public static void main(String[] args){
@@ -30,15 +31,15 @@ public class TaxiBookingSystem{
 
     }
     public static void initializeTaxis(int num){
-        for(int i=1;i<=n;i++){
-            Taxis.add(new Taxi(i));
+        for(int i=1;i<=num;i++){
+            taxis.add(new Taxi(i));
         }
     }
     public static void bookTaxi(){
         int customerId = customerCount++;
         System.out.print("Enter pickUp point (A-F) : ");
         char pickUp = in.next().toUpperCase().charAt(0);
-        System.out.print("Enter Drop Point (A-F)" : );
+        System.out.print("Enter Drop Point (A-F) : ");
         char drop = in.next().toUpperCase().charAt(0);
         System.out.print("Enter the pickUpTime in hours : ");
         int pickUpTime = in.nextInt();
@@ -48,7 +49,7 @@ public class TaxiBookingSystem{
         for(Taxi taxi : taxis){
             if(taxi.isAvailable(pickUpTime)){
                 int distance = Math.abs(taxi.currentPoint - pickUp);
-                if(distance < minDistance || (taxi.totalEarnings < selectedTaxi.totalEarnings)){
+                if(selectedTaxi == null || distance < minDistance || (taxi.totalEarnings < selectedTaxi.totalEarnings)){
                     selectedTaxi = taxi;
                     minDistance = distance;
                 }
@@ -74,7 +75,7 @@ public class TaxiBookingSystem{
             System.out.printf("%-10s %-10s %-5s %-5s %-12s %-9s %-6s%n","bookingId","customerId","form","to","pickUptime","dropTime","Amount");
 
             for(Booking booking : taxi.bookings){
-                System.out.printf("%10-d %10-d %-5c %-5c %-12d %-9d %-6d%n",booking.bookingId,booking.customerId,booking.from,booking.to,booking.pickUpTime,booking.dropTime,booking.amount);
+                System.out.printf("%-10d %-10d %-5c %-5c %-12d %-9d %-6d%n",booking.bookingId,booking.customerId,booking.from,booking.to,booking.pickUpTime,booking.dropTime,booking.amount);
                  
             }
         }

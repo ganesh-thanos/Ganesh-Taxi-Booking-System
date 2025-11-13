@@ -7,7 +7,7 @@ class Booking{
         super();
     }
     
-    public Booking(int bookingId,int customerId,int pickUpTime,int dropTime,int amount){
+    public Booking(int bookingId,int customerId,char from,char to,int pickUpTime,int dropTime,int amount){
         super();
         this.bookingId = bookingId;
         this.customerId = customerId;
