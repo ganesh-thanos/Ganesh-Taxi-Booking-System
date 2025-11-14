@@ -11,6 +11,8 @@ class Booking{
         super();
         this.bookingId = bookingId;
         this.customerId = customerId;
+        this.from = from;
+        this.to = to;
         this.pickUpTime = pickUpTime;
         this.dropTime = dropTime;
         this.amount = amount;
